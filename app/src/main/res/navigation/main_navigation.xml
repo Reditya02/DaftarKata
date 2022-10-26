@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_navigation"
+    app:startDestination="@id/homeFragment">
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.example.daftarkata.view.listletter.HomeFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_homeFragment_to_listLetterFragment"
+            app:destination="@id/listLetterFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/listLetterFragment"
+        android:name="com.example.daftarkata.view.listword.ListWordFragment"
+        android:label="fragment_list_letter"
+        tools:layout="@layout/fragment_list_word">
+        <argument
+            android:name="letter"
+            app:argType="string"
+            android:defaultValue="A" />
+    </fragment>
+</navigation>
