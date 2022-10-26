@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.daftarkata.Data.letterData
 
-class ListLetterFragment : Fragment() {
+class ListWordFragment : Fragment() {
     private lateinit var recyclerView: RecyclerView
 
     private var list: ArrayList<String> = arrayListOf()
@@ -19,7 +19,7 @@ class ListLetterFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_list_letter, container, false)
+        return inflater.inflate(R.layout.fragment_list_word, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -37,7 +37,7 @@ class ListLetterFragment : Fragment() {
     private fun showRecycler() {
         recyclerView.apply {
             layoutManager = LinearLayoutManager(context)
-            adapter = LetterAdapter(
+            adapter = WordAdapter(
                 listItem =  list,
                 onClick = {
                     (activity as MainActivity).onLetterClick(it)

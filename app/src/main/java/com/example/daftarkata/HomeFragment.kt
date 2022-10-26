@@ -47,13 +47,13 @@ class HomeFragment : Fragment() {
                 LinearLayoutManager(context)
             else
                 GridLayoutManager(context, 3)
-            adapter = WordAdapter(
+            adapter = LetterAdapter(
                 listItem = list,
                 setSelectedWord = {
                     (activity as MainActivity).setSelectedWord(it)
                 },
                 onClick = {
-                    (activity as MainActivity).navigateFragment(ListLetterFragment(), true)
+                    (activity as MainActivity).navigateFragment(ListWordFragment(), true)
                 }
             )
         }
