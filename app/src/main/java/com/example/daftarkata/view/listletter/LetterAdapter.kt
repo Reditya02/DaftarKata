@@ -1,17 +1,14 @@
-package com.example.daftarkata
+package com.example.daftarkata.view.listletter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.recyclerview.widget.RecyclerView.Adapter
-import androidx.recyclerview.widget.RecyclerView.ViewHolder
+import androidx.recyclerview.widget.RecyclerView
 import com.example.daftarkata.databinding.CardBinding
 
-
-class WordAdapter(
+class LetterAdapter(
     private val listItem: ArrayList<String>,
-    private val onClick: (String) -> Unit?
-) : Adapter<WordAdapter.Holder>() {
-
+    private val onClick: (String) -> Unit
+) : RecyclerView.Adapter<LetterAdapter.Holder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Holder {
         val view = CardBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return Holder(view)
@@ -33,5 +30,5 @@ class WordAdapter(
         return listItem.size
     }
 
-    class Holder(val binding: CardBinding) : ViewHolder(binding.root)
+    class Holder(val binding: CardBinding) : RecyclerView.ViewHolder(binding.root)
 }

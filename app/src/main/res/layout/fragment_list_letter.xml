@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ListWordFragment"
+    tools:context=".view.listword.ListWordFragment"
     android:orientation="vertical"
     android:id="@+id/fragment_list_letter">
 

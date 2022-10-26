@@ -1,4 +1,4 @@
-package com.example.daftarkata
+package com.example.daftarkata.data
 
 object Data {
     val letterData = mapOf(

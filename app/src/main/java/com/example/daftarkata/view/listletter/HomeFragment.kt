@@ -1,4 +1,4 @@
-package com.example.daftarkata
+package com.example.daftarkata.view.listletter
 
 import android.os.Bundle
 import android.view.*
@@ -7,7 +7,8 @@ import androidx.navigation.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.daftarkata.Data.letterData
+import com.example.daftarkata.data.Data.letterData
+import com.example.daftarkata.R
 
 class HomeFragment : Fragment() {
 

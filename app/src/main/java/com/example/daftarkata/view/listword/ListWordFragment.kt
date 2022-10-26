@@ -1,4 +1,4 @@
-package com.example.daftarkata
+package com.example.daftarkata.view.listword
 
 import android.content.Intent
 import android.net.Uri
@@ -9,7 +9,8 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.daftarkata.Data.letterData
+import com.example.daftarkata.data.Data.letterData
+import com.example.daftarkata.R
 
 class ListWordFragment : Fragment() {
     private lateinit var recyclerView: RecyclerView
@@ -27,7 +28,7 @@ class ListWordFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val selectedWord = ListWordFragmentArgs.fromBundle(arguments as Bundle).letter
+        val selectedWord =ListWordFragmentArgs.fromBundle(arguments as Bundle).letter
 
         recyclerView = view.findViewById(R.id.recycler_view)
         letterData[selectedWord]?.forEach {
@@ -48,7 +49,7 @@ class ListWordFragment : Fragment() {
         }
     }
 
-    fun onWordClick(word: String?) {
+    private fun onWordClick(word: String?) {
         val url = "https://www.google.com/search?q=$word"
         val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
         startActivity(intent)
