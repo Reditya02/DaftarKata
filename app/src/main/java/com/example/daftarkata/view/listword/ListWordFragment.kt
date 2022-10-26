@@ -28,7 +28,7 @@ class ListWordFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val selectedWord =ListWordFragmentArgs.fromBundle(arguments as Bundle).letter
+        val selectedWord = ListWordFragmentArgs.fromBundle(arguments as Bundle).letter
 
         recyclerView = view.findViewById(R.id.recycler_view)
         letterData[selectedWord]?.forEach {

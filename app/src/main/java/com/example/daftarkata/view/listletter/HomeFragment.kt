@@ -52,7 +52,7 @@ class HomeFragment : Fragment() {
             adapter = LetterAdapter(
                 listItem = list,
                 onClick = {
-                    val toListLetterFragment = HomeFragmentDirections.actionHomeFragmentToListLetterFragment()
+                    val toListLetterFragment = HomeFragmentDirections.actionHomeFragmentToListWordFragment()
                     toListLetterFragment.letter = it
                     findNavController().navigate(toListLetterFragment)
                 }
