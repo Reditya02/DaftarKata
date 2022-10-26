@@ -3,6 +3,7 @@ package com.example.daftarkata
 import android.os.Bundle
 import android.view.*
 import androidx.fragment.app.Fragment
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -13,7 +14,7 @@ class HomeFragment : Fragment() {
     private lateinit var recyclerView: RecyclerView
     private var list: ArrayList<String> = arrayListOf()
 
-    var isList = true
+    private var isList = true
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -47,19 +48,16 @@ class HomeFragment : Fragment() {
                 LinearLayoutManager(context)
             else
                 GridLayoutManager(context, 3)
-            adapter = WordAdapter(
+            adapter = LetterAdapter(
                 listItem = list,
-                setSelectedWord = {
-                    (activity as MainActivity).setSelectedWord(it)
-                },
                 onClick = {
-                    (activity as MainActivity).navigateFragment(ListLetterFragment(), true)
+                    val toListLetterFragment = HomeFragmentDirections.actionHomeFragmentToListLetterFragment()
+                    toListLetterFragment.letter = it
+                    findNavController().navigate(toListLetterFragment)
                 }
             )
         }
     }
-
-
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         inflater.inflate(R.menu.home_menu, menu)

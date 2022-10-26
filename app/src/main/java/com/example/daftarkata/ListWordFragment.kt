@@ -1,15 +1,17 @@
 package com.example.daftarkata
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.daftarkata.Data.letterData
 
-class ListLetterFragment : Fragment() {
+class ListWordFragment : Fragment() {
     private lateinit var recyclerView: RecyclerView
 
     private var list: ArrayList<String> = arrayListOf()
@@ -25,7 +27,7 @@ class ListLetterFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val selectedWord = (activity as MainActivity).getSelectedWord()
+        val selectedWord = ListWordFragmentArgs.fromBundle(arguments as Bundle).letter
 
         recyclerView = view.findViewById(R.id.recycler_view)
         letterData[selectedWord]?.forEach {
@@ -37,13 +39,19 @@ class ListLetterFragment : Fragment() {
     private fun showRecycler() {
         recyclerView.apply {
             layoutManager = LinearLayoutManager(context)
-            adapter = LetterAdapter(
+            adapter = WordAdapter(
                 listItem =  list,
                 onClick = {
-                    (activity as MainActivity).onLetterClick(it)
+                    onWordClick(it)
                 }
             )
         }
+    }
+
+    fun onWordClick(word: String?) {
+        val url = "https://www.google.com/search?q=$word"
+        val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
+        startActivity(intent)
     }
 
 }

@@ -1,17 +1,17 @@
 package com.example.daftarkata
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
-import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.RecyclerView.Adapter
+import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.example.daftarkata.databinding.CardBinding
+
 
 class WordAdapter(
     private val listItem: ArrayList<String>,
-    private val setSelectedWord: (String) -> Unit,
-    private val onClick: () -> Unit
-) : RecyclerView.Adapter<WordAdapter.Holder>() {
+    private val onClick: (String) -> Unit?
+) : Adapter<WordAdapter.Holder>() {
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Holder {
         val view = CardBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return Holder(view)
@@ -24,8 +24,7 @@ class WordAdapter(
             label.text = item
 
             cardLetter.setOnClickListener {
-                setSelectedWord(item)
-                onClick()
+                onClick(item)
             }
         }
     }
@@ -34,5 +33,5 @@ class WordAdapter(
         return listItem.size
     }
 
-    class Holder(val binding: CardBinding) : RecyclerView.ViewHolder(binding.root)
+    class Holder(val binding: CardBinding) : ViewHolder(binding.root)
 }
